@@ -1,2 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/css/bootstrap.min.css'; /* Bootstrap CSS file from https://bootswatch.com/sandstone/ */
+
+#bootstrap-override .nav-link.active {
+    color: #f8f5f0;
+    background-color: #cd4631;
+}
