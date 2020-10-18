@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TimerConfig } from '../functionals/models';
 
 @Component({
   selector: 'app-timer',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
+  timerConfig: TimerConfig = new TimerConfig();
 
   constructor() { }
 

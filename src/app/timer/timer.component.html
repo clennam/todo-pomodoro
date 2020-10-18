@@ -10,7 +10,16 @@
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="pomo">pomodoro</div>
-    <div class="tab-pane fade" id="shortbreak">short break</div>
-    <div class="tab-pane fade" id="longbreak">long break</div>
+    <div class="tab-pane fade show active" id="pomo">
+        pomodoro
+        <app-timer-widget [duration]="timerConfig.pomodoro"></app-timer-widget>
+    </div>
+    <div class="tab-pane fade" id="shortbreak">
+        short break
+        <app-timer-widget [duration]="timerConfig.shortBreak"></app-timer-widget>
+    </div>
+    <div class="tab-pane fade" id="longbreak">
+        long break
+        <app-timer-widget [duration]="timerConfig.longBreak"></app-timer-widget>
+    </div>
 </div>
