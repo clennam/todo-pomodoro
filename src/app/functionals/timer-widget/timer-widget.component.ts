@@ -14,18 +14,12 @@ export class TimerWidgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.countdown = this.startCountdown(this.duration);
-    this.countdown.subscribe(value => {
-      this.remaining = value;
-    },
-    err => {},
-    () => {
-      console.log('done');
-    });
+    this.startCountdown(this.duration);
   }
 
-  private startCountdown(duration: number): Observable<number> {
-    return new Observable<number>(subscriber => {
+  private startCountdown(duration: number) {
+    // declare countdown observable
+    this.countdown = new Observable<number>(subscriber => {
       subscriber.next(duration);
       let timer = setInterval(() => {
         subscriber.next(--duration);
@@ -34,6 +28,15 @@ export class TimerWidgetComponent implements OnInit {
           subscriber.complete();
         }
       }, 1000);
+    });
+
+    // subscribe to the newly created observable to update the UI variables.
+    this.countdown.subscribe(value => {
+      this.remaining = value;
+    },
+    err => {},
+    () => {
+      console.log('done');
     });
   }
 
