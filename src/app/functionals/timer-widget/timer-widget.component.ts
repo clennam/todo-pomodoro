@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-timer-widget',
@@ -8,18 +8,40 @@ import { Observable } from 'rxjs';
 })
 export class TimerWidgetComponent implements OnInit {
   @Input() duration: number;
-  countdown: Observable<number>;
+  countdownSub: Subscription;
   remaining: number;
+
+  isRunning: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.remaining = this.duration;
+  }
+
+  start() {
+    this.isRunning = true;
     this.startCountdown(this.duration);
+  }
+
+  stop() {
+    this.pause();
+    this.remaining = this.duration;
+  }
+
+  private pause() {
+    this.isRunning = false;
+    this.countdownSub?.unsubscribe();
+  }
+
+  private unpause() {
+    this.isRunning = true;
+    this.startCountdown(this.remaining);
   }
 
   private startCountdown(duration: number) {
     // declare countdown observable
-    this.countdown = new Observable<number>(subscriber => {
+    let countdown: Observable<number> = new Observable<number>(subscriber => {
       subscriber.next(duration);
       let timer = setInterval(() => {
         subscriber.next(--duration);
@@ -31,13 +53,13 @@ export class TimerWidgetComponent implements OnInit {
     });
 
     // subscribe to the newly created observable to update the UI variables.
-    this.countdown.subscribe(value => {
+    this.countdownSub = countdown.subscribe(value => {
       this.remaining = value;
     },
-    err => {},
-    () => {
-      console.log('done');
-    });
+      err => { },
+      () => {
+        console.log('done');
+      });
   }
 
 }

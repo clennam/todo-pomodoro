@@ -1,2 +1,6 @@
 <p>Duration: {{ duration }}</p>
 <p>Remaining: {{ remaining }}</p>
+
+<button type="button" class="btn btn-danger text-uppercase" (click)="isRunning ? stop() : start()">
+    <span>{{ isRunning ? 'Stop' : 'Start' }} </span><i [ngClass]="['fas', isRunning ? 'fa-stop' : 'fa-play']"></i>
+</button>
