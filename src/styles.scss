@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/css/bootstrap.min.css'; /* Bootstrap CSS file from https://bootswatch.com/sandstone/ */
+@import '~@fortawesome/fontawesome-free/css/all.min.css'; /* Fontawesome CSS file */
 
 #bootstrap-override .nav-link.active {
     color: #f8f5f0;
