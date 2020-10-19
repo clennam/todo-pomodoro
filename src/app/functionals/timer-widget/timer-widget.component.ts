@@ -53,13 +53,15 @@ export class TimerWidgetComponent implements OnInit {
     });
 
     // subscribe to the newly created observable to update the UI variables.
-    this.countdownSub = countdown.subscribe(value => {
-      this.remaining = value;
-    },
+    this.countdownSub = countdown.subscribe(
+      value => {
+        this.remaining = value;
+      },
       err => { },
       () => {
-        console.log('done');
-      });
+        console.log('timer complete');
+      }
+    );
   }
 
 }
