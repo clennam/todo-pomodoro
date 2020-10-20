@@ -13,6 +13,9 @@
                 <div class="modal-body text-left">
                     <div class="form-group">
                         <label>Durations (minutes)</label>
+                        <small *ngIf="!validateDurations(optionsForm.value)" id="durationError" class="form-text text-danger m-0">
+                            Please make sure all durations are at least one second long.
+                        </small>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="pomoDuration" class="small font-weight-bold">Pomodoro</label>
@@ -67,7 +70,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Save changes</button>
+                    <button type="submit" class="btn btn-danger" [disabled]="!validateDurations(optionsForm.value)">Save changes</button>
                 </div>
             </form>
         </div>

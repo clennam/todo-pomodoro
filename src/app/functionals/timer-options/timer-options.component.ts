@@ -78,12 +78,18 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
       returnConfig.shortBreak *= 60;
       returnConfig.longBreak *= 60;
     } else {
-      returnConfig.pomodoro /= 60;
-      returnConfig.shortBreak /= 60;
-      returnConfig.longBreak /= 60;
+      returnConfig.pomodoro = Number.parseFloat((returnConfig.pomodoro / 60).toFixed(2));
+      returnConfig.shortBreak = Number.parseFloat((returnConfig.shortBreak / 60).toFixed(2));
+      returnConfig.longBreak = Number.parseFloat((returnConfig.longBreak / 60).toFixed(2));
     }
 
     return returnConfig;
+  }
+
+  validateDurations(config: TimerConfig): boolean {
+    return Array.of('pomodoro', 'shortBreak', 'longBreak').every(duration => {
+      return config[duration] * 60 >= 1
+    });
   }
 
 }
