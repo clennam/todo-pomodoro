@@ -24,14 +24,23 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.timerConfig) {
-      this.optionsForm = this.formBuilder.group(this.timerConfig);
+      this.optionsForm = this.formBuilder.group({...this.timerConfig});
     }
   }
 
   onSubmit(config: TimerConfig) {
     this.saveOptions.emit(config);
-    this.optionsForm.reset();
-    ($(`#${this.modalId}`) as any).modal('hide');
+    this.optionsForm.reset(this.timerConfig);
+    this.closeModal();
+  }
+
+  get modalRef() {
+    return ($(`#${this.modalId}`) as any);
+  }
+
+  closeModal() {
+    this.optionsForm.reset(this.timerConfig);
+    this.modalRef.modal('hide');
   }
 
 }
