@@ -28,6 +28,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group" formGroupName="soundsEnabled">
+                        <label>Play sound effect...</label>
+                        <div class="container row mx-0">
+                            <div class="form-check col">
+                                <input type="checkbox" formControlName="crankEnabled"
+                                    class="form-check-input" id="crankEnabled">
+                                <label class="form-check-label" for="crankEnabled">on timer start</label>
+                            </div>
+                            <div class="form-check col">
+                                <input type="checkbox" formControlName="tickEnabled"
+                                    class="form-check-input" id="tickEnabled">
+                                <label class="form-check-label" for="tickEnabled">as timer runs</label>
+                            </div>
+                            <div class="form-check col">
+                                <input type="checkbox" formControlName="dingEnabled"
+                                    class="form-check-input" id="dingEnabled">
+                                <label class="form-check-label" for="dingEnabled">when timer ends</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group form-check">
                         <input type="checkbox" formControlName="pauseEnabled" class="form-check-input"
                             id="pauseEnabled">

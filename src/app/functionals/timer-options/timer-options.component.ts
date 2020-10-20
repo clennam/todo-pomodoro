@@ -24,7 +24,8 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.timerConfig) {
-      this.optionsForm = this.formBuilder.group(this.convertConfigUnits(this.timerConfig));
+      let fbCompatConfig = this.createFBCompatConfig(this.timerConfig);
+      this.optionsForm = this.formBuilder.group(fbCompatConfig);
     }
   }
 
@@ -45,8 +46,25 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Since soundsEnabled is a nested object, we need to create a FormGroup for it
+   * and nest it within the larger object in order for FormBuilder to create an
+   * appropriate FormGroup.
+   * 
+   * This method creates an intermediate `any` object for FormBuilder to use instead of the
+   * `timerConfig` object itself.
+   * @param timerConfig timerConfig from parent component
+   */
+  createFBCompatConfig(timerConfig: TimerConfig): any {
+    let unitsConvertedConfig = this.convertConfigUnits(timerConfig);
+    return {
+      ...unitsConvertedConfig,
+      soundsEnabled: this.formBuilder.group(unitsConvertedConfig.soundsEnabled)
+    }
+  }
+
+  /**
    * Converts durations in timerConfig from seconds to minutes,
-   * or, if 'reverse' param is true, from minutes to seconds.
+   * or, if `reverse` param is true, from minutes to seconds.
    * Needs to be used to display minutes in options UI modal.
    * 
    * @param timerConfig timerConfig from parent component
