@@ -14,7 +14,7 @@ export class TimerDisplayPipe implements PipeTransform {
    */
   transform(fullTime: number): string {
     let minutes: string = Math.floor(fullTime/60).toString().padStart(2, '0');
-    let seconds: string = (fullTime%60).toString().padStart(2, '0');
+    let seconds: string = Math.round(fullTime%60).toString().padStart(2, '0');
     return `${minutes}:${seconds}`;
   }
 
