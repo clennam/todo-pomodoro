@@ -14,7 +14,14 @@
                     <div class="form-check">
                         <input type="checkbox" formControlName="pauseEnabled" class="form-check-input"
                             id="pauseEnabled">
-                        <label class="form-check-label" for="pauseEnabled">Enable pause</label>
+                        <label class="form-check-label" for="pauseEnabled">Enable pausing</label>
+                        <div *ngIf="optionsForm.value.pauseEnabled" class="alert alert-secondary" role="alert">
+                            <i class="fas fa-exclamation-triangle text-dark"></i>
+                            <span class="text-light"> Warning: 
+                                <a href="https://www.reddit.com/r/productivity/comments/4te22e/pause_on_pomodoro_technique/">a pomodoro is meant to be indivisible</a>.
+                            </span>
+                            <small class="d-block">Enabling pausing may result in loss of focus and unnecessary interruptions.</small>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
