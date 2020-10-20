@@ -30,7 +30,6 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
 
   onSubmit(config: TimerConfig) {
     config = this.convertConfigUnits(config, true);
-    console.log(config);
     this.saveOptions.emit(config);
     this.optionsForm.reset(this.convertConfigUnits(this.timerConfig));
     this.closeModal();
