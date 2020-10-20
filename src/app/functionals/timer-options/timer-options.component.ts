@@ -24,13 +24,15 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.timerConfig) {
-      this.optionsForm = this.formBuilder.group({...this.timerConfig});
+      this.optionsForm = this.formBuilder.group(this.convertConfigUnits(this.timerConfig));
     }
   }
 
   onSubmit(config: TimerConfig) {
+    config = this.convertConfigUnits(config, true);
+    console.log(config);
     this.saveOptions.emit(config);
-    this.optionsForm.reset(this.timerConfig);
+    this.optionsForm.reset(this.convertConfigUnits(this.timerConfig));
     this.closeModal();
   }
 
@@ -39,8 +41,32 @@ export class TimerOptionsComponent implements OnInit, OnChanges {
   }
 
   closeModal() {
-    this.optionsForm.reset(this.timerConfig);
+    this.optionsForm.reset(this.convertConfigUnits(this.timerConfig));
     this.modalRef.modal('hide');
+  }
+
+  /**
+   * Converts durations in timerConfig from seconds to minutes,
+   * or, if 'reverse' param is true, from minutes to seconds.
+   * Needs to be used to display minutes in options UI modal.
+   * 
+   * @param timerConfig timerConfig from parent component
+   * @param reverse if true, convert from minutes to seconds
+   */
+  convertConfigUnits(timerConfig: TimerConfig, reverse?: boolean): TimerConfig {
+    let returnConfig = { ...timerConfig };
+
+    if (reverse) {
+      returnConfig.pomodoro *= 60;
+      returnConfig.shortBreak *= 60;
+      returnConfig.longBreak *= 60;
+    } else {
+      returnConfig.pomodoro /= 60;
+      returnConfig.shortBreak /= 60;
+      returnConfig.longBreak /= 60;
+    }
+
+    return returnConfig;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './timer-widget.component.html',
   styleUrls: ['./timer-widget.component.scss']
 })
-export class TimerWidgetComponent implements OnInit {
+export class TimerWidgetComponent implements OnInit, OnChanges {
   @Input() pauseEnabled: boolean;
   @Input() duration: number;
   remaining: number;
@@ -20,6 +20,12 @@ export class TimerWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.remaining = this.duration;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.duration) {
+      this.stop();
+    }
   }
 
   start() {

@@ -17,11 +17,11 @@ export class TimerComponent implements OnInit {
   }
 
   stopAllTimers() {
-    this.timerWidgetList.forEach(timerWidget => timerWidget.stop());    
+    this.timerWidgetList.forEach(timerWidget => timerWidget.stop());
   }
 
   updateOptions(config: TimerConfig) {
-    this.stopAllTimers();
     this.timerConfig = config;
+    this.stopAllTimers();
   }
 }

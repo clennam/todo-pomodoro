@@ -11,16 +11,38 @@
             </div>
             <form [formGroup]="optionsForm" (ngSubmit)="onSubmit(optionsForm.value)">
                 <div class="modal-body text-left">
-                    <div class="form-check">
+                    <div class="form-group">
+                        <label>Durations (minutes)</label>
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="pomoDuration" class="small font-weight-bold">Pomodoro</label>
+                                <input type="number" formControlName="pomodoro" class="form-control" id="pomoDuration">
+                            </div>
+                            <div class="form-group col">
+                                <label for="sbDuration" class="small font-weight-bold">Short Break</label>
+                                <input type="number" formControlName="shortBreak" class="form-control" id="sbDuration">
+                            </div>
+                            <div class="form-group col">
+                                <label for="lbDuration" class="small font-weight-bold">Long Break</label>
+                                <input type="number" formControlName="longBreak" class="form-control" id="lbDuration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
                         <input type="checkbox" formControlName="pauseEnabled" class="form-check-input"
                             id="pauseEnabled">
                         <label class="form-check-label" for="pauseEnabled">Enable pausing</label>
                         <div *ngIf="optionsForm.value.pauseEnabled" class="alert alert-secondary" role="alert">
                             <i class="fas fa-exclamation-triangle text-dark"></i>
-                            <span class="text-light"> Warning: 
-                                <a href="https://www.reddit.com/r/productivity/comments/4te22e/pause_on_pomodoro_technique/">a pomodoro is meant to be indivisible</a>.
-                            </span>
-                            <small class="d-block">Enabling pausing may result in loss of focus and unnecessary interruptions.</small>
+                            <span class="text-light"> Warning: </span>
+                            <a target="_blank"
+                                href="https://www.reddit.com/r/productivity/comments/4te22e/pause_on_pomodoro_technique/">
+                                a pomodoro is meant to be indivisible.
+                            </a>
+                            <small class="d-block text-light">
+                                Enabling pausing may result in loss of focus and unnecessary
+                                interruptions.
+                            </small>
                         </div>
                     </div>
                 </div>
