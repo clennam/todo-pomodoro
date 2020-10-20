@@ -98,12 +98,22 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
    * Loads sounds based on currently set options in the config
    */
   loadSounds() {
-    if (this.soundsEnabled.crankEnabled) this.crankAudio = new Audio('assets/aud/crank.wav');
-    if (this.soundsEnabled.dingEnabled) this.dingAudio = new Audio('assets/aud/ding.wav');
+    if (this.soundsEnabled.crankEnabled) {
+      this.crankAudio = new Audio('assets/aud/crank.wav');
+    } else {
+      this.crankAudio = undefined;
+    };
+    if (this.soundsEnabled.dingEnabled) {
+      this.dingAudio = new Audio('assets/aud/ding.wav');
+    } else {
+      this.dingAudio = undefined;
+    };
     if (this.soundsEnabled.tickEnabled) {
       this.tickingAudio = new Audio('assets/aud/ticking.wav');
       this.tickingAudio.loop = true;
-    }
+    } else {
+      this.tickingAudio = undefined;
+    };
   }
 
 }
