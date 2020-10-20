@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { SoundsConfig } from '../models';
 
 @Component({
   selector: 'app-timer-widget',
@@ -7,6 +8,7 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./timer-widget.component.scss']
 })
 export class TimerWidgetComponent implements OnInit, OnChanges {
+  @Input() soundsEnabled: SoundsConfig;
   @Input() pauseEnabled: boolean;
   @Input() duration: number;
   remaining: number;
@@ -24,12 +26,14 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.remaining = this.duration;
-    this.loadSounds();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.duration) {
       this.stop();
+    }
+    if (changes.soundsEnabled && changes.soundsEnabled.currentValue) {
+      this.loadSounds();
     }
   }
 
@@ -90,12 +94,16 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
     );
   }
 
+  /**
+   * Loads sounds based on currently set options in the config
+   */
   loadSounds() {
-    this.crankAudio = new Audio('assets/aud/crank.wav');
-    this.tickingAudio = new Audio('assets/aud/ticking.wav');
-    this.dingAudio = new Audio('assets/aud/ding.wav');
-
-    this.tickingAudio.loop = true;
+    if (this.soundsEnabled.crankEnabled) this.crankAudio = new Audio('assets/aud/crank.wav');
+    if (this.soundsEnabled.dingEnabled) this.dingAudio = new Audio('assets/aud/ding.wav');
+    if (this.soundsEnabled.tickEnabled) {
+      this.tickingAudio = new Audio('assets/aud/ticking.wav');
+      this.tickingAudio.loop = true;
+    }
   }
 
 }
