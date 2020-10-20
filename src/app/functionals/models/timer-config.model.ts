@@ -6,4 +6,5 @@ export class TimerConfig {
     pomodoro: number = 1500;
     shortBreak: number = 300;
     longBreak: number = 900;
+    pauseEnabled: boolean = false;
 }

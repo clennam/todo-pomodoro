@@ -11,13 +11,13 @@
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="pomo">
-        <app-timer-widget [duration]="timerConfig.pomodoro"></app-timer-widget>
+        <app-timer-widget [duration]="timerConfig.pomodoro" [pauseEnabled]="timerConfig.pauseEnabled"></app-timer-widget>
     </div>
     <div class="tab-pane fade" id="shortbreak">
-        <app-timer-widget [duration]="timerConfig.shortBreak"></app-timer-widget>
+        <app-timer-widget [duration]="timerConfig.shortBreak" [pauseEnabled]="timerConfig.pauseEnabled"></app-timer-widget>
     </div>
     <div class="tab-pane fade" id="longbreak">
-        <app-timer-widget [duration]="timerConfig.longBreak"></app-timer-widget>
+        <app-timer-widget [duration]="timerConfig.longBreak" [pauseEnabled]="timerConfig.pauseEnabled"></app-timer-widget>
     </div>
     <button type="button" class="btn btn-info mt-1 text-uppercase" data-toggle="modal" data-target="#optionsModal">
         <span>Options </span><i class="fas fa-cog"></i>
