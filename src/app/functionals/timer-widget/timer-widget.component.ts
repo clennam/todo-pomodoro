@@ -7,11 +7,14 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./timer-widget.component.scss']
 })
 export class TimerWidgetComponent implements OnInit {
+  @Input() pauseEnabled: boolean;
   @Input() duration: number;
-  countdownSub: Subscription;
   remaining: number;
 
+  countdownSub: Subscription;
+
   isRunning: boolean = false;
+  isPaused: boolean = false;
 
   constructor() { }
 
@@ -20,23 +23,30 @@ export class TimerWidgetComponent implements OnInit {
   }
 
   start() {
-    this.isRunning = true;
-    this.startCountdown(this.duration);
+    this.remaining = this.duration;
+    this.unpause();
   }
 
   stop() {
     this.pause();
+    this.isPaused = false;
     this.remaining = this.duration;
   }
 
-  private pause() {
+  pause() {
     this.isRunning = false;
+    this.isPaused = true;
     this.countdownSub?.unsubscribe();
   }
 
-  private unpause() {
+  unpause() {
     this.isRunning = true;
+    this.isPaused = false;
     this.startCountdown(this.remaining);
+  }
+
+  get showPauseButton() {
+    return this.pauseEnabled && (this.countdownSub && !this.countdownSub.closed || this.isPaused);
   }
 
   private startCountdown(duration: number) {
