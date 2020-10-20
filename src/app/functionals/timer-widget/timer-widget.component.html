@@ -1,5 +1,4 @@
-<p>Duration: {{ duration | timerDisplay }}</p>
-<p>Remaining: {{ remaining | timerDisplay }}</p>
+<p class="display-1 py-2 mb-0 font-weight-bold text-dark">{{ remaining | timerDisplay }}</p>
 
 <button type="button" class="btn btn-danger text-uppercase" (click)="isRunning ? stop() : start()">
     <span>{{ isRunning ? 'Stop' : 'Start' }} </span><i [ngClass]="['fas', isRunning ? 'fa-stop' : 'fa-play']"></i>
