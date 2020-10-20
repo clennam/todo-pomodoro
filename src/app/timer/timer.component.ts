@@ -16,8 +16,12 @@ export class TimerComponent implements OnInit {
   ngOnInit() {
   }
 
-  tabSwitch() {
+  stopAllTimers() {
     this.timerWidgetList.forEach(timerWidget => timerWidget.stop());    
   }
 
+  updateOptions(config: TimerConfig) {
+    this.stopAllTimers();
+    this.timerConfig = config;
+  }
 }

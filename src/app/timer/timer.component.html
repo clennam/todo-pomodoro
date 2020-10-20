@@ -1,23 +1,26 @@
 <ul class="nav nav-pills nav-fill nav-justified border-bottom pb-2">
-    <li class="nav-item" (click)="tabSwitch()">
+    <li class="nav-item" (click)="stopAllTimers()">
         <a class="nav-link active" id="pomo-tab" data-toggle="tab" href="#pomo">Pomodoro</a>
     </li>
-    <li class="nav-item" (click)="tabSwitch()">
+    <li class="nav-item" (click)="stopAllTimers()">
         <a class="nav-link" id="shortbr-tab" data-toggle="tab" href="#shortbreak">Short Break</a>
     </li>
-    <li class="nav-item" (click)="tabSwitch()">
+    <li class="nav-item" (click)="stopAllTimers()">
         <a class="nav-link" id="longbr-tab" data-toggle="tab" href="#longbreak">Long Break</a>
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="pomo">
-        <app-timer-widget [duration]="timerConfig.pomodoro" [pauseEnabled]="timerConfig.pauseEnabled"></app-timer-widget>
+        <app-timer-widget [duration]="timerConfig.pomodoro" [pauseEnabled]="timerConfig.pauseEnabled">
+        </app-timer-widget>
     </div>
     <div class="tab-pane fade" id="shortbreak">
-        <app-timer-widget [duration]="timerConfig.shortBreak" [pauseEnabled]="timerConfig.pauseEnabled"></app-timer-widget>
+        <app-timer-widget [duration]="timerConfig.shortBreak" [pauseEnabled]="timerConfig.pauseEnabled">
+        </app-timer-widget>
     </div>
     <div class="tab-pane fade" id="longbreak">
-        <app-timer-widget [duration]="timerConfig.longBreak" [pauseEnabled]="timerConfig.pauseEnabled"></app-timer-widget>
+        <app-timer-widget [duration]="timerConfig.longBreak" [pauseEnabled]="timerConfig.pauseEnabled">
+        </app-timer-widget>
     </div>
     <button type="button" class="btn btn-info mt-1 text-uppercase" data-toggle="modal" data-target="#optionsModal">
         <span>Options </span><i class="fas fa-cog"></i>
@@ -25,4 +28,5 @@
 </div>
 
 <!-- Options Modal -->
-<app-timer-options modalId="optionsModal"></app-timer-options>
+<app-timer-options modalId="optionsModal" [timerConfig]="timerConfig" (saveOptions)="updateOptions($event)">
+</app-timer-options>

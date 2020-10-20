@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TimerWidgetComponent } from './timer-widget/timer-widget.component';
 import { TimerDisplayPipe } from './pipes/timer-display/timer-display.pipe';
 import { TimerOptionsComponent } from './timer-options/timer-options.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import { TimerOptionsComponent } from './timer-options/timer-options.component';
     TimerOptionsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     TimerWidgetComponent,
