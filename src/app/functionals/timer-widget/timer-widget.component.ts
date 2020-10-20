@@ -16,10 +16,15 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
   isRunning: boolean = false;
   isPaused: boolean = false;
 
+  crankAudio: HTMLAudioElement;
+  tickingAudio: HTMLAudioElement;
+  dingAudio: HTMLAudioElement;
+
   constructor() { }
 
   ngOnInit() {
     this.remaining = this.duration;
+    this.loadSounds();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -30,22 +35,26 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
 
   start() {
     this.remaining = this.duration;
+    this.crankAudio?.play().then(() => this.tickingAudio?.play());
     this.unpause();
   }
 
   stop() {
+    this.tickingAudio?.pause();
     this.pause();
     this.isPaused = false;
     this.remaining = this.duration;
   }
 
   pause() {
+    this.tickingAudio?.pause();
     this.isRunning = false;
     this.isPaused = true;
     this.countdownSub?.unsubscribe();
   }
 
   unpause() {
+    this.tickingAudio?.play();
     this.isRunning = true;
     this.isPaused = false;
     this.startCountdown(this.remaining);
@@ -75,9 +84,18 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
       },
       err => { },
       () => {
-        console.log('timer complete');
+        if (this.isRunning) { this.dingAudio?.play() };
+        this.stop();
       }
     );
+  }
+
+  loadSounds() {
+    this.crankAudio = new Audio('assets/aud/crank.wav');
+    this.tickingAudio = new Audio('assets/aud/ticking.wav');
+    this.dingAudio = new Audio('assets/aud/ding.wav');
+
+    this.tickingAudio.loop = true;
   }
 
 }
