@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'assets/css/bootstrap.min.css'; /* Bootstrap CSS file from https://bootswatch.com/sandstone/ */
-@import '~@fortawesome/fontawesome-free/css/all.min.css'; /* Fontawesome CSS file */
 
-#bootstrap-override .nav-link.active {
-    color: #f8f5f0;
-    background-color: #cd4631;
-}
+// Bootstrap imports
+@import 'assets/scss/sandstone/variables';  // theme variables - https://bootswatch.com/sandstone/
+@import 'assets/scss/custom/variables';  // custom variables
+@import '~bootstrap/scss/bootstrap';        // main bootstrap scss - https://getbootstrap.com/
+@import 'assets/scss/sandstone/bootswatch'; // theme style rules - https://bootswatch.com/sandstone/
+@import 'assets/scss/custom/style-overrides'; // custom style rules
+
+// Fontawesome CSS file - https://fontawesome.com/
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
