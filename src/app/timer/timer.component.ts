@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, QueryList, ViewChildren, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
 import { TimerConfig } from '../functionals/models';
 import { TimerWidgetComponent } from '../functionals/timer-widget/timer-widget.component';
 
@@ -11,7 +11,7 @@ export class TimerComponent implements AfterViewInit {
   timerConfig: TimerConfig = new TimerConfig();
   @ViewChildren(TimerWidgetComponent) timerWidgetList: QueryList<TimerWidgetComponent>;
 
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngAfterViewInit() {
     this.initTabSwitchingBehaviour();
@@ -45,11 +45,13 @@ export class TimerComponent implements AfterViewInit {
     $('#timerTablist .nav-link')
       .on('hide.bs.tab', (event: any) => {
         this.stopAllTimers(true);
+        this.cd.detectChanges();
       })
       .on('shown.bs.tab', (event: any) => {
         this.timerWidgetList.forEach(timerWidget => {
           timerWidget.setDisabled(false);
-        })
+        });
+        this.cd.detectChanges();
       });
   }
 }
