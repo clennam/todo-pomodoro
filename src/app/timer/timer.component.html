@@ -1,26 +1,26 @@
-<ul class="nav nav-pills nav-fill nav-justified border-bottom pb-2">
+<ul class="nav nav-pills nav-fill nav-justified border-bottom pb-2" role="tablist">
     <li class="nav-item" (click)="stopAllTimers()">
-        <a class="nav-link active" id="pomo-tab" data-toggle="tab" href="#pomo">Pomodoro</a>
+        <a class="nav-link active" id="pomo-tab" data-toggle="tab" href="#pomo" role="tab">Pomodoro</a>
     </li>
     <li class="nav-item" (click)="stopAllTimers()">
-        <a class="nav-link" id="shortbr-tab" data-toggle="tab" href="#shortbreak">Short Break</a>
+        <a class="nav-link" id="shortbr-tab" data-toggle="tab" href="#shortbreak" role="tab">Short Break</a>
     </li>
     <li class="nav-item" (click)="stopAllTimers()">
-        <a class="nav-link" id="longbr-tab" data-toggle="tab" href="#longbreak">Long Break</a>
+        <a class="nav-link" id="longbr-tab" data-toggle="tab" href="#longbreak" role="tab">Long Break</a>
     </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="pomo">
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="pomo" role="tabpanel">
         <app-timer-widget [duration]="timerConfig.pomodoro" [pauseEnabled]="timerConfig.pauseEnabled"
             [soundsEnabled]="timerConfig.soundsEnabled">
         </app-timer-widget>
     </div>
-    <div class="tab-pane fade" id="shortbreak">
+    <div class="tab-pane fade" id="shortbreak" role="tabpanel">
         <app-timer-widget [duration]="timerConfig.shortBreak" [pauseEnabled]="timerConfig.pauseEnabled"
             [soundsEnabled]="timerConfig.soundsEnabled">
         </app-timer-widget>
     </div>
-    <div class="tab-pane fade" id="longbreak">
+    <div class="tab-pane fade" id="longbreak" role="tabpanel">
         <app-timer-widget [duration]="timerConfig.longBreak" [pauseEnabled]="timerConfig.pauseEnabled"
             [soundsEnabled]="timerConfig.soundsEnabled">
         </app-timer-widget>
