@@ -2,13 +2,15 @@
 
 <div class="btn-toolbar d-flex justify-content-center">
     <div class="btn-group" [class.mr-1]="showPauseButton">
-        <button type="button" class="btn btn-danger text-uppercase" (click)="isRunning ? stop() : start()">
+        <button type="button" class="btn btn-danger text-uppercase" (click)="isRunning ? stop() : start()"
+            [disabled]="isDisabled">
             <span>{{ isRunning ? 'Stop' : isPaused ? 'Restart' : 'Start' }} </span>
             <i [ngClass]="['fas', isRunning ? 'fa-stop' : 'fa-play']"></i>
         </button>
     </div>
     <div class="btn-group ml-1" *ngIf="showPauseButton">
-        <button type="button" class="btn btn-danger text-uppercase" (click)="isRunning ? pause() : unpause()">
+        <button type="button" class="btn btn-danger text-uppercase" (click)="isRunning ? pause() : unpause()"
+            [disabled]="isDisabled">
             <span>{{ isRunning ? 'Pause' : 'Continue' }} </span>
             <i [ngClass]="['fas', isRunning ? 'fa-pause' : 'fa-play']"></i>
         </button>

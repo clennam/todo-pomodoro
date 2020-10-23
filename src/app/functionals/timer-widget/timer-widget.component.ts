@@ -17,6 +17,7 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
 
   isRunning: boolean = false;
   isPaused: boolean = false;
+  isDisabled: boolean = false;
 
   private crankAudio: HTMLAudioElement;
   private tickingAudio: HTMLAudioElement;
@@ -66,6 +67,10 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
 
   get showPauseButton() {
     return this.pauseEnabled && (this.countdownSub && !this.countdownSub.closed || this.isPaused);
+  }
+
+  setDisabled(value: boolean) {
+    this.isDisabled = value;
   }
 
   private startCountdown(duration: number) {
