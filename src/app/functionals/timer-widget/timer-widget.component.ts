@@ -13,14 +13,14 @@ export class TimerWidgetComponent implements OnInit, OnChanges {
   @Input() duration: number;
   remaining: number;
 
-  countdownSub: Subscription;
+  private countdownSub: Subscription;
 
   isRunning: boolean = false;
   isPaused: boolean = false;
 
-  crankAudio: HTMLAudioElement;
-  tickingAudio: HTMLAudioElement;
-  dingAudio: HTMLAudioElement;
+  private crankAudio: HTMLAudioElement;
+  private tickingAudio: HTMLAudioElement;
+  private dingAudio: HTMLAudioElement;
 
   constructor() { }
 
