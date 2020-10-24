@@ -37,6 +37,8 @@ export class AppComponent {
     return this._arrowsShown;
   }
   toggleArrows() {
-    this._arrowsShown = !this._arrowsShown;
+    if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(navigator.userAgent))) {
+      this._arrowsShown = !this._arrowsShown;
+    }
   }
 }
