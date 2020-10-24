@@ -1,0 +1,15 @@
+<li class="list-group-item rounded shadow mb-1 text-left container-fluid" [class.bg-success]="isComplete">
+    <div class="row">
+        <div class="input-group col">
+            <div class="input-group-prepend">
+                <span class="input-group-text border-0 bg-white">
+                    <i *ngIf="!isComplete && !isHover" class="text-secondary far fa-check-circle"
+                        (click)="toggleComplete()"></i>
+                    <i *ngIf="isComplete" class="text-success fas fa-check-circle" (click)="toggleComplete()"></i>
+                    <i *ngIf="!isComplete && isHover" class="text-info fas fa-pencil-alt"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control border-0" placeholder="Add task..." (focus)="toggleHover()" (focusout)="toggleHover()">
+        </div>
+    </div>
+</li>

@@ -4,12 +4,14 @@ import { TimerWidgetComponent } from './timer-widget/timer-widget.component';
 import { TimerDisplayPipe } from './pipes/timer-display/timer-display.pipe';
 import { TimerOptionsComponent } from './timer-options/timer-options.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
     TimerWidgetComponent,
     TimerDisplayPipe,
-    TimerOptionsComponent
+    TimerOptionsComponent,
+    TodoComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     TimerWidgetComponent,
-    TimerOptionsComponent
+    TimerOptionsComponent,
+    TodoComponent
   ]
 })
 export class FunctionalsModule { }

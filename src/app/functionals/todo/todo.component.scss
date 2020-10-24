@@ -1,0 +1,12 @@
+.rounded {
+    border-radius: 2em !important;
+}
+
+.input-group-prepend > span {
+    font-size: 1.5em;
+}
+
+.form-control:focus{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
