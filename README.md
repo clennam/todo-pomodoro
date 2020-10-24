@@ -1,27 +1,28 @@
-# TodoPomodoro
+# TODO/POMODORO
+
+Todo/Pomodoro is a combination to-do list and timer to help users follow the Pomodoro Technique ([Author](https://francescocirillo.com/pages/pomodoro-technique)) ([Wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)).
+
+It is a personal project to refresh my frontend knowledge and expand my personal portfolio.
+
+## View
+
+This project is currently hosted on [Github Pages](https://pages.github.com/).
+
+Click [here](https://clennam.github.io/todo-pomodoro/) to go the site.
+
+## Installation and usage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
 
-## Development server
+After cloning the project,
+- Run `npm install` to install needed dependencies
+- Run `npm start` or `ng serve` for a dev server.
+- Navigate to `http://localhost:4200/`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## License
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project is licensed under the [Apache License v2.0](https://choosealicense.com/licenses/apache-2.0/).
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Click [here](https://github.com/clennam/todo-pomodoro/blob/master/LICENSE) to see the license file.
