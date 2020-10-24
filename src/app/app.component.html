@@ -1,8 +1,13 @@
 <div class="text-center container-fluid">
   <div class="jumbotron jumbotron-fluid row mb-0">
     <div class="container">
-      <h1 class="text-light text-uppercase display-4">Todo/Pomodoro</h1>
-      <p class="text-light font-weight-bold">by Aishcharya "Clennam" Kahandawala</p>
+      <h1 class="text-light text-uppercase display-4">{{ title }}</h1>
+      <div class="text-light font-weight-bold">by Aishcharya "Clennam" Kahandawala</div>
+      <a class="d-block mx-auto" href="https://github.com/clennam/todo-pomodoro/" target="_blank"
+        (mouseover)="toggleArrows()" (mouseout)="toggleArrows()">
+        <img class="img-fluid w-5" src="assets/img/GitHub_Logo.png" />
+        <i [@showHide]="arrowsShown ? 'show' : 'hidden'" class="fas fa-angle-double-right align-middle text-black"></i>
+      </a>
     </div>
   </div>
   <div class="row">

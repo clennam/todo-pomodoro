@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren, ChangeDetectorRef, HostBinding } from '@angular/core';
 import { TimerConfig } from '../functionals/models';
 import { TimerWidgetComponent } from '../functionals/timer-widget/timer-widget.component';
 
