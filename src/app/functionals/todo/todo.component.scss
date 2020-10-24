@@ -10,3 +10,17 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+div[id^="tooltip-"] {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: none;
+
+    &[data-show] {
+        @extend div, [id^="tooltip-"];
+        display: block;
+    }
+}

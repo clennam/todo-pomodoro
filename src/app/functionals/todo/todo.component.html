@@ -2,14 +2,19 @@
     <div class="row">
         <div class="input-group col">
             <div class="input-group-prepend">
-                <span class="input-group-text border-0 bg-white">
+                <span class="input-group-text border-0 bg-white" [id]="'button-' + index">
                     <i *ngIf="!isComplete && !isHover" class="text-secondary far fa-check-circle"
                         (click)="toggleComplete()"></i>
                     <i *ngIf="isComplete" class="text-success fas fa-check-circle" (click)="toggleComplete()"></i>
                     <i *ngIf="!isComplete && isHover" class="text-info fas fa-pencil-alt"></i>
                 </span>
+                <div [id]="'tooltip-' + index" role="tooltip">
+                    Give this task a name first.
+                </div>
             </div>
-            <input type="text" class="form-control border-0" placeholder="Add task..." (focus)="toggleHover()" (focusout)="toggleHover()">
+            <input type="text"
+                [ngClass]="{'form-control border-0 font-weight-bold': true, 'text-info': !isComplete && isHover}"
+                [(ngModel)]="task" placeholder="Add task..." (focus)="toggleHover()" (focusout)="toggleHover()">
         </div>
     </div>
 </li>
