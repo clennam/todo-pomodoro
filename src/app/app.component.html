@@ -3,19 +3,19 @@
     <div class="container">
       <h1 class="text-light text-uppercase display-4">{{ title }}</h1>
       <div class="text-light font-weight-bold">by Aishcharya "Clennam" Kahandawala</div>
-      <a class="d-block mx-auto" href="https://github.com/clennam/todo-pomodoro/" target="_blank"
+      <a class="d-block mx-auto" href="https://github.com/clennam/todo-pomodoro/" target="_blank" tabindex="-1"
         (mouseover)="toggleArrows()" (mouseout)="toggleArrows()">
         <img class="img-fluid w-5" src="assets/img/GitHub_Logo.png" />
         <i [@showHide]="arrowsShown ? 'show' : 'hidden'" class="fas fa-angle-double-right align-middle text-black"></i>
       </a>
     </div>
   </div>
-  <div class="row">
+  <div class="row border-bottom">
     <div class="col-md border-right py-2">
       <app-timer></app-timer>
     </div>
     <hr class="col-md d-md-none" />
-    <div class="col-md border-left py-2">
+    <div class="col-md border-left pt-2 pb-4">
       <router-outlet></router-outlet>
     </div>
   </div>
