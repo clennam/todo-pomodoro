@@ -2,14 +2,16 @@
   <div class="jumbotron jumbotron-fluid row mb-0">
     <div class="container">
       <h1 class="text-light text-uppercase display-4">
-        <span>TODO/</span><br class="d-sm-none"/><span>POMODORO</span>
+        <span>TODO/</span><br class="d-sm-none" /><span>POMODORO</span>
       </h1>
       <div class="text-light font-weight-bold">by Aishcharya "Clennam" Kahandawala</div>
-      <a class="d-block mx-auto" href="https://github.com/clennam/todo-pomodoro/" target="_blank" tabindex="-1"
-        (mouseover)="toggleArrows()" (mouseout)="toggleArrows()">
-        <img class="img-fluid logo" src="assets/img/GitHub_Logo.png" />
+      <div class="mx-auto">
+        <a href="https://github.com/clennam/todo-pomodoro/" target="_blank" tabindex="-1" (mouseover)="toggleArrows()"
+          (mouseout)="toggleArrows()">
+          <img class="img-fluid logo" src="assets/img/GitHub_Logo.png" />
+        </a>
         <i [@showHide]="arrowsShown ? 'show' : 'hidden'" class="fas fa-angle-double-right align-middle text-black"></i>
-      </a>
+      </div>
     </div>
   </div>
   <div class="row border-bottom">
