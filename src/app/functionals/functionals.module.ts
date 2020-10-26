@@ -5,13 +5,15 @@ import { TimerDisplayPipe } from './pipes/timer-display/timer-display.pipe';
 import { TimerOptionsComponent } from './timer-options/timer-options.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoComponent } from './todo/todo.component';
+import { TimesPipe } from './pipes/times/times.pipe';
 
 @NgModule({
   declarations: [
     TimerWidgetComponent,
     TimerDisplayPipe,
     TimerOptionsComponent,
-    TodoComponent
+    TodoComponent,
+    TimesPipe
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { TodoComponent } from './todo/todo.component';
   exports: [
     TimerWidgetComponent,
     TimerOptionsComponent,
-    TodoComponent
+    TodoComponent,
+    TimesPipe
   ]
 })
 export class FunctionalsModule { }

@@ -18,6 +18,7 @@ div[id^="tooltip-"] {
     border-radius: 4px;
     font-size: 13px;
     display: none;
+    z-index: 5;
 
     &[data-show] {
         @extend div, [id^="tooltip-"];

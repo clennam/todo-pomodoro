@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  todoListLength = 1;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addTodo() {
+    this.todoListLength++;
   }
 
 }
