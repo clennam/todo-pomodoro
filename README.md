@@ -1,6 +1,6 @@
 # TODO/POMODORO
 
-Todo/Pomodoro is a combination to-do list and timer to help users follow the Pomodoro Technique ([Author](https://francescocirillo.com/pages/pomodoro-technique)) ([Wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)).
+Todo/Pomodoro is a combination to-do list and timer to help users follow the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique), created by [Francesco Cirillo](https://francescocirillo.com/pages/pomodoro-technique).
 
 It is a personal project to refresh my frontend knowledge and expand my personal portfolio.
 
