@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { createPopper } from '@popperjs/core';
 
 @Component({
@@ -7,7 +7,8 @@ import { createPopper } from '@popperjs/core';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements AfterViewInit, OnDestroy {
-  @Input() index: number;
+  @Input() id: number;
+  @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
   private _isComplete: boolean = false;
   get isComplete(): boolean {
@@ -29,6 +30,14 @@ export class TodoComponent implements AfterViewInit, OnDestroy {
     this._isHover = !this._isHover;
   }
 
+  private _isHoverDelete: boolean = false;
+  get isHoverDelete(): boolean {
+    return this._isHoverDelete;
+  }
+  toggleHoverDelete() {
+    this._isHoverDelete = !this._isHoverDelete;
+  }
+
   task: string;
 
   private button: any;
@@ -38,8 +47,8 @@ export class TodoComponent implements AfterViewInit, OnDestroy {
   constructor() { }
 
   ngAfterViewInit() {
-    this.button = document.querySelector(`#button-${this.index}`);
-    this.tooltip = document.querySelector(`#tooltip-${this.index}`);
+    this.button = document.querySelector(`#button-${this.id}`);
+    this.tooltip = document.querySelector(`#tooltip-${this.id}`);
   }
 
   ngOnDestroy() {
@@ -69,6 +78,11 @@ export class TodoComponent implements AfterViewInit, OnDestroy {
   hide() {
     this.tooltip.removeAttribute('data-show');
     this.destroy();
+  }
+
+  emitDelete() {
+    this.ngOnDestroy();
+    this.delete.emit(this.id);
   }
 
 }

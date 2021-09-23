@@ -6,15 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  todoListLength = 1;
-
+  todoList = [0];
   constructor() { }
 
   ngOnInit() {
   }
 
   addTodo() {
-    this.todoListLength++;
+    this.todoList.push(Math.max(...this.todoList) + 1);
+  }
+
+  deleteItem(id: number) {
+    let index = this.todoList.indexOf(id);
+    if (index > -1) {
+      this.todoList.splice(index, 1);
+    }
   }
 
 }

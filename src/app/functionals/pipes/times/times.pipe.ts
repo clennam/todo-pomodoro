@@ -24,3 +24,4 @@ export class TimesPipe implements PipeTransform {
   }
 
 }
+// TODO: Remove if unneeded
